@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import TodoItem from './TodoItem';
+import { TodoItem } from './TodoItem';
 
-export default class TodosList extends Component {
+export class TodosList extends Component {
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -13,7 +13,12 @@ export default class TodosList extends Component {
     return (
       <ul>
         {this.props.todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} onChange={this.props.onChange} />
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            handleChangeProps={this.props.handleChangeProps}
+            deleteTodoProps={this.props.deleteTodoProps}
+          />
         ))}
       </ul>
     );
