@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Header } from './Header';
 import { InputTodo } from './InputTodo';
 import { TodosList } from './TodosList';
-import { v4 as uuidv4 } from 'uuid'; 
+import { v4 as uuidv4 } from 'uuid';
 
 export class TodoContainer extends Component {
   state = {
@@ -63,14 +63,16 @@ export class TodoContainer extends Component {
 
   render() {
     return (
-      <div>
-        <Header />
-        <InputTodo addTodoProps={this.addTodo} />
-        <TodosList
-          todos={this.state.todos}
-          handleChangeProps={this.handleChange}
-          deleteTodoProps={this.deleteTodo}
-        />
+      <div className="container">
+        <div className="inner">
+          <Header />
+          <InputTodo addTodoProps={this.addTodo} />
+          <TodosList
+            todos={this.state.todos}
+            handleChangeProps={this.handleChange}
+            deleteTodoProps={this.deleteTodo}
+          />
+        </div>
       </div>
     );
   }
