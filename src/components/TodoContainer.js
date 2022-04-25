@@ -5,11 +5,29 @@ import { TodosList } from './TodosList';
 import { v4 as uuidv4 } from 'uuid';
 
 export const TodoContainer = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(getInitialTodos());
 
-  useEffect(() => {
-    // console.log('test run');
-  });
+  // useEffect(() => {
+  //   // Getting stored todos from localStorage
+  //   const temp = localStorage.getItem('todos');
+  //   const loadedTodos = JSON.parse(temp);
+  //   if (loadedTodos) {
+  //     setTodos(loadedTodos);
+  //   }
+  // }, [setTodos]);
+
+   useEffect(() => {
+     // Storing todos items in localStorage
+     const temp = JSON.stringify(todos);
+     localStorage.setItem('todos', temp);
+   }, [todos]);
+
+   // Arrow function does not work here?!
+  function getInitialTodos() {
+    const temp = localStorage.getItem('todos');
+    const savedTodos = JSON.parse(temp);
+    return savedTodos || [];
+  };
 
   const handleChange = (id) => {
     setTodos((prevState) =>
