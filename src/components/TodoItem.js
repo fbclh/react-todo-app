@@ -20,6 +20,11 @@ export class TodoItem extends Component {
   //   event.key === 'Enter' && this.setState({ editing: false });
   // };
 
+  componentWillUnmount() {
+    // Unmounting, the component is removed from the DOM.
+    this.props.setUpdate(this.props.todo.title, this.props.todo.id);
+  }
+
   render() {
     const completedStyle = {
       textDecoration: 'line-through',

@@ -6,23 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export class TodoContainer extends Component {
   state = {
-    todos: [
-      {
-        id: uuidv4(),
-        title: 'Setup development environment',
-        completed: true,
-      },
-      {
-        id: uuidv4(),
-        title: 'Develop website and add content',
-        completed: false,
-      },
-      {
-        id: uuidv4(),
-        title: 'Deploy to live server',
-        completed: false,
-      },
-    ],
+    todos: [],
   };
 
   handleChange = (id) => {
@@ -87,6 +71,31 @@ export class TodoContainer extends Component {
   //     ],
   //   });
   // };
+
+  // fetch data from API (https://jsonplaceholder.typicode.com/todos) and store in state as todos array (this.state.todos)
+  // componentDidMount() {
+  //   fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
+  //     .then((response) => response.json())
+  //     .then((data) => this.setState({ todos: data }));
+  // }
+
+  // Check if there is data in localStorage and if so, set state to that data
+  componentDidMount() {
+    // Mounting, the initial render
+    if (JSON.parse(localStorage.getItem('todos'))) {
+      this.setState({
+        todos: JSON.parse(localStorage.getItem('todos')),
+      });
+    }
+  }
+
+  // Save data to localStorage when the state changes (i.e. when todos array changes)
+  componentDidUpdate(prevProps, prevState) {
+    // Updating, the component is re-rendered
+    if (prevState.todos !== this.state.todos) {
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+  }
 
   render() {
     return (
