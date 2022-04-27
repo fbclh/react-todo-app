@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import { Header } from './Header';
 import { InputTodo } from './InputTodo';
 import { TodosList } from './TodosList';
+
 import { v4 as uuidv4 } from 'uuid';
 
 export const TodoContainer = () => {
@@ -16,18 +19,18 @@ export const TodoContainer = () => {
   //   }
   // }, [setTodos]);
 
-   useEffect(() => {
-     // Storing todos items in localStorage
-     const temp = JSON.stringify(todos);
-     localStorage.setItem('todos', temp);
-   }, [todos]);
+  useEffect(() => {
+    // Storing todos items in localStorage
+    const temp = JSON.stringify(todos);
+    localStorage.setItem('todos', temp);
+  }, [todos]);
 
-   // Arrow function does not work here?!
+  // Arrow function does not work here?!
   function getInitialTodos() {
     const temp = localStorage.getItem('todos');
     const savedTodos = JSON.parse(temp);
     return savedTodos || [];
-  };
+  }
 
   const handleChange = (id) => {
     setTodos((prevState) =>
