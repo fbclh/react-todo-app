@@ -1,5 +1,4 @@
-export const About = (props) => {
-  console.log(props);
+export const About = () => {
   return <h1>About page</h1>;
 };
 

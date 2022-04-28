@@ -5,18 +5,18 @@
 }
 
 body {
+  height: 100vh;
+  background: #fff;
+  color: #444;
   font-family: 'Segoe UI', Arial, sans-serif;
   line-height: 1.4;
-  color: #444;
-  background: #fff;
-  height: 100vh;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -27,21 +27,21 @@ body {
 }
 
 .form-container {
+  display: flex;
+  justify-content: space-evenly;
   width: 100%;
   margin-bottom: 20px;
-  display: flex;
   border-radius: calc(0.5 * 100px);
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.38);
-  justify-content: space-evenly;
 }
 
 .input-text {
-  font-size: 1rem;
-  font-weight: 400;
   width: 85%;
   padding-right: 5px;
   padding-left: 10px;
   border-radius: calc(0.5 * 100px);
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .input-text::placeholder {
@@ -49,23 +49,70 @@ body {
 }
 
 .input-submit {
+  margin-right: 10px;
   background: transparent;
   color: #5b5b5b;
+  font-weight: 600;
   text-transform: capitalize;
   cursor: pointer;
-  font-weight: 600;
-  margin-right: 10px;
 }
 
 .input-text,
 .input-submit {
   height: 45px;
-  outline: none;
   border: none;
+  outline: none;
 }
 
 /* NavLink */
 .active-link {
   color: orangered;
   text-decoration: underline;
+}
+
+/* Sidebar Nav */
+.navBar {
+  position: relative;
+}
+
+.navBar button {
+  z-index: 10;
+  position: fixed;
+  top: 40px;
+  left: 40px;;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menuNav {
+  z-index: 9;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  max-width: 290px;
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  background: darkcyan;
+  list-style: none;
+}
+
+.menuNav.showMenu {
+  width: 100%;
+}
+
+a {
+  display: block;
+  padding: 10px 40px;
+  color: #3fffd2;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.menuNav li:first-child {
+  margin-top: 7rem;
 }
